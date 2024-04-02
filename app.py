@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']="sqlite:///todo.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
@@ -14,6 +15,7 @@ class todo(db.Model):
 
     def __repr__(self) -> str:
         return f"{self.sno}-{self.title}"
+    
 with app.app_context():
     db.create_all()
 
